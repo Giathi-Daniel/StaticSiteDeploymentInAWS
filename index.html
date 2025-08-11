@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Site Deployment with S3 & CloudFront</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>StaticDeploy</span>
+            </div>
+            <p class="tagline">Learn how to deploy your static websites with AWS S3 and CloudFront for blazing fast performance and global availability.</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>StaticDeploy</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#steps">How To</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container animate-fadein">
+            <h1>Deploy Static Sites with AWS S3 & CloudFront</h1>
+            <p>A complete guide to hosting your static websites on AWS infrastructure for maximum performance, scalability, and cost-effectiveness.</p>
+            <a href="#steps" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Use S3 & CloudFront?</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-fadein delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Blazing Fast Performance</h3>
+                    <p>CloudFront's global CDN ensures your content is delivered with low latency from edge locations worldwide.</p>
+                </div>
+                <div class="feature-card animate-fadein delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Cost Effective</h3>
+                    <p>S3 hosting is incredibly affordable, with costs often just pennies per month for small to medium sites.</p>
+                </div>
+                <div class="feature-card animate-fadein delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Reliable</h3>
+                    <p>AWS infrastructure provides enterprise-grade security, durability, and availability for your content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps" id="steps">
+        <div class="container">
+            <h2 class="section-title">How to Deploy Your Static Site</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Prepare Your Static Site</h3>
+                        <p>Build your static site using your favorite generator (like Hugo, Jekyll, or Gatsby) or hand-code your HTML/CSS/JS files.</p>
+                        <p>Make sure all your links are relative and your site works locally before deploying.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Create an S3 Bucket</h3>
+                        <p>Log in to your AWS Console and navigate to S3 service. Create a new bucket with a name matching your domain (e.g., www.yourdomain.com).</p>
+                        <div class="code-block">
+                            aws s3 mb s3://www.yourdomain.com
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Enable Static Website Hosting</h3>
+                        <p>In your bucket properties, enable "Static website hosting" and set index.html as your index document.</p>
+                        <div class="code-block">
+                            aws s3 website s3://www.yourdomain.com --index-document index.html
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Upload Your Files</h3>
+                        <p>Upload all your static files to the S3 bucket. You can do this through the AWS Console, AWS CLI, or CI/CD pipeline.</p>
+                        <div class="code-block">
+                            aws s3 sync ./dist s3://www.yourdomain.com --delete
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Set Up CloudFront Distribution</h3>
+                        <p>Create a new CloudFront distribution with your S3 bucket as the origin. Configure caching, SSL certificate, and domain settings.</p>
+                        <p>Wait for the distribution to deploy (this can take 10-15 minutes).</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Configure DNS</h3>
+                        <p>Point your domain's DNS to the CloudFront distribution using a CNAME or Alias record in Route 53 or your DNS provider.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing Estimates</h2>
+            <p>Cost effective hosting for any size static site</p>
+            <div class="pricing-cards">
+                <div class="pricing-card animate-fadein delay-1">
+                    <h3>Small Site</h3>
+                    <div class="price">$0.50<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 1GB storage</li>
+                        <li>10,000 requests/month</li>
+                        <li>Basic performance</li>
+                        <li>S3 hosting only</li>
+                    </ul>
+                    <a href="#steps" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card featured animate-fadein delay-2">
+                    <div class="featured-badge">Recommended</div>
+                    <h3>Medium Site</h3>
+                    <div class="price">$5<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 10GB storage</li>
+                        <li>100,000 requests/month</li>
+                        <li>Global CDN (CloudFront)</li>
+                        <li>Custom domain with SSL</li>
+                        <li>Better performance</li>
+                    </ul>
+                    <a href="#steps" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card animate-fadein delay-3">
+                    <h3>Large Site</h3>
+                    <div class="price">$15<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>50GB+ storage</li>
+                        <li>1M+ requests/month</li>
+                        <li>Global CDN (CloudFront)</li>
+                        <li>Advanced caching</li>
+                        <li>DDoS protection</li>
+                    </ul>
+                    <a href="#steps" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's the difference between S3 and CloudFront?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>S3 is storage where your files are kept, while CloudFront is a content delivery network (CDN) that caches your files at edge locations worldwide for faster delivery to users.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need both S3 and CloudFront?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, you can use S3 alone for static hosting, but adding CloudFront improves performance with global caching and provides additional features like custom SSL certificates and better HTTPS support.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I automate deployments?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can set up a CI/CD pipeline using AWS CodePipeline, GitHub Actions, or other tools to automatically deploy changes when you push to your repository.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use my own domain name?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can configure CloudFront to use your custom domain and provision an SSL certificate through AWS Certificate Manager for free.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What about server-side redirects?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can configure redirect rules in CloudFront using Lambda@Edge functions or set up redirects directly in S3 for simple cases.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StaticDeploy</h3>
+                    <p>Learn how to deploy static websites with AWS infrastructure for maximum performance and reliability.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">AWS Documentation</a></li>
+                        <li><a href="#">Static Site Generators</a></li>
+                        <li><a href="#">CI/CD Setup Guides</a></li>
+                        <li><a href="#">Performance Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#steps">How To</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@staticdeploy.example">hello@staticdeploy.example</a></li>
+                        <li><a href="#">Support Forum</a></li>
+                        <li><a href="#">Contribute on GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StaticDeploy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other open items
+                faqQuestions.forEach(q => {
+                    if (q !== question && q.parentElement.classList.contains('active')) {
+                        q.parentElement.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-fadein');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
