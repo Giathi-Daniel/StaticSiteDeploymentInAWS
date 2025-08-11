@@ -234,3 +234,5 @@ MIT
 
 7. Multiple Deployment Methods:
    - Manual uploads and automated CI/CD
+
+Need a quick setup walkthrough? Follow my step-by-step guide here [medium-walkthrough](https://medium.com/@giathidaniel252/deploying-a-static-website-on-amazon-s3-with-cloudfront-a877c427b336)
