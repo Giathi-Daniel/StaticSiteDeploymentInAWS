@@ -1,3 +1,5 @@
+![image-preview](preview.png)
+
 ```markdown
 # Static Site Deployment on AWS S3 & CloudFront
 
@@ -7,11 +9,11 @@ A complete guide and template for deploying blazing-fast static websites on AWS 
 
 ## Features
 
-- 🚀 **High Performance**: Global content delivery via CloudFront's CDN
-- 💰 **Cost Effective**: Pay only for what you use (often <$1/month for small sites)
-- 🔒 **Secure**: Free SSL certificates via AWS Certificate Manager
-- ⚡ **Scalable**: Automatically handles traffic spikes
-- 🌍 **Global Availability**: 200+ edge locations worldwide
+- High Performance: Global content delivery via CloudFront's CDN
+- Cost Effective: Pay only for what you use (often <$1/month for small sites)
+- Secure: Free SSL certificates via AWS Certificate Manager
+- Scalable: Automatically handles traffic spikes
+- Global Availability: 200+ edge locations worldwide
 
 ## Prerequisites
 
@@ -211,24 +213,24 @@ MIT
 
 ## Key Features of This README:
 
-1. **Comprehensive Step-by-Step Guide**:
+1. Comprehensive Step-by-Step Guide:
    - From S3 bucket creation to CloudFront configuration
    - Includes both console and CLI methods
 
-2. **Visual Architecture Diagram**:
+2. Visual Architecture Diagram:
    - Shows the relationship between components
 
-3. **CI/CD Automation**:
+3. CI/CD Automation:
    - Ready-to-use GitHub Actions workflow
 
-4. **Cost Optimization**:
+4. Cost Optimization:
    - Clear pricing breakdown and free tier information
 
-5. **Troubleshooting Section**:
+5. Troubleshooting Section:
    - Solutions for common issues
 
-6. **Advanced Configurations**:
+6. Advanced Configurations:
    - SPA routing, custom error pages, etc.
 
-7. **Multiple Deployment Methods**:
+7. Multiple Deployment Methods:
    - Manual uploads and automated CI/CD
