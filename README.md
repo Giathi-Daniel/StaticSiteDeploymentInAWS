@@ -1,6 +1,5 @@
 ![image-preview](preview.png)
 
-```markdown
 # Static Site Deployment on AWS S3 & CloudFront
 
 ![Static Site Deployment Architecture](https://d1.awsstatic.com/Projects/P4105033/architecture-Diagram.427a8e0e5fe83a7a78f7e4d8c1e0b1c5e7a1a0a8.png)
